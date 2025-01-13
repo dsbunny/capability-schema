@@ -1,6 +1,5 @@
 import { z } from 'zod';
 export declare const CapabilityBase: z.ZodObject<{
-    tenant_id: z.ZodString;
     width: z.ZodNumber;
     height: z.ZodNumber;
     fps: z.ZodNumber;
@@ -9,7 +8,6 @@ export declare const CapabilityBase: z.ZodObject<{
     is_smooth: z.ZodBoolean;
     is_power_efficient: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    tenant_id: string;
     width: number;
     height: number;
     fps: number;
@@ -18,7 +16,6 @@ export declare const CapabilityBase: z.ZodObject<{
     is_smooth: boolean;
     is_power_efficient: boolean;
 }, {
-    tenant_id: string;
     width: number;
     height: number;
     fps: number;
@@ -29,18 +26,21 @@ export declare const CapabilityBase: z.ZodObject<{
 }>;
 export type CapabilityBase = z.infer<typeof CapabilityBase>;
 export declare const CapabilityMetadata: z.ZodObject<{
+    tenant_id: z.ZodString;
     capability_id: z.ZodString;
     create_timestamp: z.ZodString;
     modify_timestamp: z.ZodString;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
     row_number: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
+    tenant_id: string;
     capability_id: string;
     create_timestamp: string;
     modify_timestamp: string;
     is_deleted: boolean;
     row_number: number;
 }, {
+    tenant_id: string;
     capability_id: string;
     create_timestamp: string;
     modify_timestamp: string;
@@ -48,7 +48,6 @@ export declare const CapabilityMetadata: z.ZodObject<{
     is_deleted?: boolean | undefined;
 }>;
 export declare const Capability: z.ZodObject<z.objectUtil.extendShape<{
-    tenant_id: z.ZodString;
     width: z.ZodNumber;
     height: z.ZodNumber;
     fps: z.ZodNumber;
@@ -57,13 +56,13 @@ export declare const Capability: z.ZodObject<z.objectUtil.extendShape<{
     is_smooth: z.ZodBoolean;
     is_power_efficient: z.ZodBoolean;
 }, {
+    tenant_id: z.ZodString;
     capability_id: z.ZodString;
     create_timestamp: z.ZodString;
     modify_timestamp: z.ZodString;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
     row_number: z.ZodNumber;
 }>, "strip", z.ZodTypeAny, {
-    tenant_id: string;
     width: number;
     height: number;
     fps: number;
@@ -71,13 +70,13 @@ export declare const Capability: z.ZodObject<z.objectUtil.extendShape<{
     is_supported: boolean;
     is_smooth: boolean;
     is_power_efficient: boolean;
+    tenant_id: string;
     capability_id: string;
     create_timestamp: string;
     modify_timestamp: string;
     is_deleted: boolean;
     row_number: number;
 }, {
-    tenant_id: string;
     width: number;
     height: number;
     fps: number;
@@ -85,6 +84,7 @@ export declare const Capability: z.ZodObject<z.objectUtil.extendShape<{
     is_supported: boolean;
     is_smooth: boolean;
     is_power_efficient: boolean;
+    tenant_id: string;
     capability_id: string;
     create_timestamp: string;
     modify_timestamp: string;
@@ -107,7 +107,6 @@ export declare const DbDtoToCapability: z.ZodEffects<z.ZodObject<{
     is_deleted: z.ZodDefault<z.ZodNumber>;
     row_number: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    tenant_id: string;
     width: number;
     height: number;
     fps: number;
@@ -115,17 +114,18 @@ export declare const DbDtoToCapability: z.ZodEffects<z.ZodObject<{
     is_supported: number;
     is_smooth: number;
     is_power_efficient: number;
+    tenant_id: string;
     capability_id: string;
     create_timestamp: string;
     modify_timestamp: string;
     is_deleted: number;
     row_number: number;
 }, {
-    tenant_id: string;
     width: number;
     height: number;
     fps: number;
     codec: string;
+    tenant_id: string;
     capability_id: string;
     create_timestamp: string;
     modify_timestamp: string;
@@ -135,7 +135,6 @@ export declare const DbDtoToCapability: z.ZodEffects<z.ZodObject<{
     is_power_efficient?: number | undefined;
     is_deleted?: number | undefined;
 }>, {
-    tenant_id: string;
     width: number;
     height: number;
     fps: number;
@@ -143,17 +142,18 @@ export declare const DbDtoToCapability: z.ZodEffects<z.ZodObject<{
     is_supported: boolean;
     is_smooth: boolean;
     is_power_efficient: boolean;
+    tenant_id: string;
     capability_id: string;
     create_timestamp: string;
     modify_timestamp: string;
     is_deleted: boolean;
     row_number: number;
 }, {
-    tenant_id: string;
     width: number;
     height: number;
     fps: number;
     codec: string;
+    tenant_id: string;
     capability_id: string;
     create_timestamp: string;
     modify_timestamp: string;

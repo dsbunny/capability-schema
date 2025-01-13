@@ -2,8 +2,6 @@
 import { z } from 'zod';
 import { sqliteDateSchema } from './sqlite-date.schema.js';
 export const CapabilityBase = z.object({
-    tenant_id: z.string().uuid()
-        .describe('The UUID of the tenant'),
     width: z.number().int().min(1).max(10000)
         .describe('Maximum width of the capability'),
     height: z.number().int().min(1).max(10000)
@@ -20,6 +18,8 @@ export const CapabilityBase = z.object({
         .describe('Whether the capability is power efficient'),
 });
 export const CapabilityMetadata = z.object({
+    tenant_id: z.string().uuid()
+        .describe('The UUID of the tenant'),
     capability_id: z.string().uuid()
         .describe('The UUID of the capability'),
     create_timestamp: z.string().datetime() // ISO 8601
