@@ -40,10 +40,13 @@ export const CapabilityAudio = CapabilityBase.merge(z.object({
 	// audible.  96 kHz and 192 kHz are used for professional audio.
 	sample_rate: z.number().int().min(1).max(192000)
 		.describe('Maximum sample rate of the capability'),
-	// An integer can obviously cannot support 5.1 surround sound, but it can
-	// support stereo sound.
-	channels: z.number().int().min(1).max(32)
+	// An integer cannot represent 5.1 surround sound.
+	channels: z.string().min(1).max(512)
 		.describe('Maximum number of channels of the capability'),
+	is_smooth: z.boolean()
+		.describe('Whether the capability is smooth'),
+	is_power_efficient: z.boolean()
+		.describe('Whether the capability is power efficient'),
 }))
 	.describe('The audio capability');
 export type CapabilityAudio = z.infer<typeof CapabilityAudio>;

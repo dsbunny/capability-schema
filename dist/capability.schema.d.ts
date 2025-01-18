@@ -55,21 +55,27 @@ export declare const CapabilityAudio: z.ZodObject<z.objectUtil.extendShape<{
     mime_type: z.ZodLiteral<"audio">;
     codec: z.ZodString;
     sample_rate: z.ZodNumber;
-    channels: z.ZodNumber;
+    channels: z.ZodString;
+    is_smooth: z.ZodBoolean;
+    is_power_efficient: z.ZodBoolean;
 }>, "strip", z.ZodTypeAny, {
     mime_type: "audio";
     mime_subtype: string;
     is_supported: boolean;
     codec: string;
+    is_smooth: boolean;
+    is_power_efficient: boolean;
     sample_rate: number;
-    channels: number;
+    channels: string;
 }, {
     mime_type: "audio";
     mime_subtype: string;
     is_supported: boolean;
     codec: string;
+    is_smooth: boolean;
+    is_power_efficient: boolean;
     sample_rate: number;
-    channels: number;
+    channels: string;
 }>;
 export type CapabilityAudio = z.infer<typeof CapabilityAudio>;
 export declare const CapabilityImage: z.ZodObject<z.objectUtil.extendShape<{
@@ -156,21 +162,27 @@ export declare const CapabilityTypes: z.ZodDiscriminatedUnion<"mime_type", [z.Zo
     mime_type: z.ZodLiteral<"audio">;
     codec: z.ZodString;
     sample_rate: z.ZodNumber;
-    channels: z.ZodNumber;
+    channels: z.ZodString;
+    is_smooth: z.ZodBoolean;
+    is_power_efficient: z.ZodBoolean;
 }>, "strip", z.ZodTypeAny, {
     mime_type: "audio";
     mime_subtype: string;
     is_supported: boolean;
     codec: string;
+    is_smooth: boolean;
+    is_power_efficient: boolean;
     sample_rate: number;
-    channels: number;
+    channels: string;
 }, {
     mime_type: "audio";
     mime_subtype: string;
     is_supported: boolean;
     codec: string;
+    is_smooth: boolean;
+    is_power_efficient: boolean;
     sample_rate: number;
-    channels: number;
+    channels: string;
 }>, z.ZodObject<z.objectUtil.extendShape<{
     mime_type: z.ZodString;
     mime_subtype: z.ZodString;
@@ -233,21 +245,27 @@ export declare const Capability: z.ZodIntersection<z.ZodDiscriminatedUnion<"mime
     mime_type: z.ZodLiteral<"audio">;
     codec: z.ZodString;
     sample_rate: z.ZodNumber;
-    channels: z.ZodNumber;
+    channels: z.ZodString;
+    is_smooth: z.ZodBoolean;
+    is_power_efficient: z.ZodBoolean;
 }>, "strip", z.ZodTypeAny, {
     mime_type: "audio";
     mime_subtype: string;
     is_supported: boolean;
     codec: string;
+    is_smooth: boolean;
+    is_power_efficient: boolean;
     sample_rate: number;
-    channels: number;
+    channels: string;
 }, {
     mime_type: "audio";
     mime_subtype: string;
     is_supported: boolean;
     codec: string;
+    is_smooth: boolean;
+    is_power_efficient: boolean;
     sample_rate: number;
-    channels: number;
+    channels: string;
 }>, z.ZodObject<z.objectUtil.extendShape<{
     mime_type: z.ZodString;
     mime_subtype: z.ZodString;
@@ -331,21 +349,27 @@ export declare const DbDtoFromCapability: z.ZodEffects<z.ZodIntersection<z.ZodDi
     mime_type: z.ZodLiteral<"audio">;
     codec: z.ZodString;
     sample_rate: z.ZodNumber;
-    channels: z.ZodNumber;
+    channels: z.ZodString;
+    is_smooth: z.ZodBoolean;
+    is_power_efficient: z.ZodBoolean;
 }>, "strip", z.ZodTypeAny, {
     mime_type: "audio";
     mime_subtype: string;
     is_supported: boolean;
     codec: string;
+    is_smooth: boolean;
+    is_power_efficient: boolean;
     sample_rate: number;
-    channels: number;
+    channels: string;
 }, {
     mime_type: "audio";
     mime_subtype: string;
     is_supported: boolean;
     codec: string;
+    is_smooth: boolean;
+    is_power_efficient: boolean;
     sample_rate: number;
-    channels: number;
+    channels: string;
 }>, z.ZodObject<z.objectUtil.extendShape<{
     mime_type: z.ZodString;
     mime_subtype: z.ZodString;
@@ -413,8 +437,10 @@ export declare const DbDtoFromCapability: z.ZodEffects<z.ZodIntersection<z.ZodDi
     mime_subtype: string;
     is_supported: boolean;
     codec: string;
+    is_smooth: boolean;
+    is_power_efficient: boolean;
     sample_rate: number;
-    channels: number;
+    channels: string;
 } | {
     mime_type: "image";
     mime_subtype: string;
@@ -484,8 +510,10 @@ export declare const DbDtoToCapability: z.ZodEffects<z.ZodObject<{
     mime_subtype: string;
     is_supported: boolean;
     codec: string;
+    is_smooth: boolean;
+    is_power_efficient: boolean;
     sample_rate: number;
-    channels: number;
+    channels: string;
 } & {
     tenant_id: string;
     capability_id: string;
