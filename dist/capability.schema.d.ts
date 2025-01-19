@@ -22,7 +22,7 @@ export declare const CapabilityVideo: z.ZodObject<z.objectUtil.extendShape<{
     codec: z.ZodString;
     width: z.ZodNumber;
     height: z.ZodNumber;
-    fps: z.ZodNumber;
+    frame_rate: z.ZodNumber;
     is_smooth: z.ZodBoolean;
     is_power_efficient: z.ZodBoolean;
 }>, "strip", z.ZodTypeAny, {
@@ -32,7 +32,7 @@ export declare const CapabilityVideo: z.ZodObject<z.objectUtil.extendShape<{
     codec: string;
     width: number;
     height: number;
-    fps: number;
+    frame_rate: number;
     is_smooth: boolean;
     is_power_efficient: boolean;
 }, {
@@ -42,7 +42,7 @@ export declare const CapabilityVideo: z.ZodObject<z.objectUtil.extendShape<{
     codec: string;
     width: number;
     height: number;
-    fps: number;
+    frame_rate: number;
     is_smooth: boolean;
     is_power_efficient: boolean;
 }>;
@@ -131,7 +131,7 @@ export declare const CapabilityTypes: z.ZodDiscriminatedUnion<"mime_type", [z.Zo
     codec: z.ZodString;
     width: z.ZodNumber;
     height: z.ZodNumber;
-    fps: z.ZodNumber;
+    frame_rate: z.ZodNumber;
     is_smooth: z.ZodBoolean;
     is_power_efficient: z.ZodBoolean;
 }>, "strip", z.ZodTypeAny, {
@@ -141,7 +141,7 @@ export declare const CapabilityTypes: z.ZodDiscriminatedUnion<"mime_type", [z.Zo
     codec: string;
     width: number;
     height: number;
-    fps: number;
+    frame_rate: number;
     is_smooth: boolean;
     is_power_efficient: boolean;
 }, {
@@ -151,7 +151,7 @@ export declare const CapabilityTypes: z.ZodDiscriminatedUnion<"mime_type", [z.Zo
     codec: string;
     width: number;
     height: number;
-    fps: number;
+    frame_rate: number;
     is_smooth: boolean;
     is_power_efficient: boolean;
 }>, z.ZodObject<z.objectUtil.extendShape<{
@@ -214,7 +214,7 @@ export declare const Capability: z.ZodIntersection<z.ZodDiscriminatedUnion<"mime
     codec: z.ZodString;
     width: z.ZodNumber;
     height: z.ZodNumber;
-    fps: z.ZodNumber;
+    frame_rate: z.ZodNumber;
     is_smooth: z.ZodBoolean;
     is_power_efficient: z.ZodBoolean;
 }>, "strip", z.ZodTypeAny, {
@@ -224,7 +224,7 @@ export declare const Capability: z.ZodIntersection<z.ZodDiscriminatedUnion<"mime
     codec: string;
     width: number;
     height: number;
-    fps: number;
+    frame_rate: number;
     is_smooth: boolean;
     is_power_efficient: boolean;
 }, {
@@ -234,7 +234,7 @@ export declare const Capability: z.ZodIntersection<z.ZodDiscriminatedUnion<"mime
     codec: string;
     width: number;
     height: number;
-    fps: number;
+    frame_rate: number;
     is_smooth: boolean;
     is_power_efficient: boolean;
 }>, z.ZodObject<z.objectUtil.extendShape<{
@@ -318,7 +318,7 @@ export declare const DbDtoFromCapability: z.ZodEffects<z.ZodIntersection<z.ZodDi
     codec: z.ZodString;
     width: z.ZodNumber;
     height: z.ZodNumber;
-    fps: z.ZodNumber;
+    frame_rate: z.ZodNumber;
     is_smooth: z.ZodBoolean;
     is_power_efficient: z.ZodBoolean;
 }>, "strip", z.ZodTypeAny, {
@@ -328,7 +328,7 @@ export declare const DbDtoFromCapability: z.ZodEffects<z.ZodIntersection<z.ZodDi
     codec: string;
     width: number;
     height: number;
-    fps: number;
+    frame_rate: number;
     is_smooth: boolean;
     is_power_efficient: boolean;
 }, {
@@ -338,7 +338,7 @@ export declare const DbDtoFromCapability: z.ZodEffects<z.ZodIntersection<z.ZodDi
     codec: string;
     width: number;
     height: number;
-    fps: number;
+    frame_rate: number;
     is_smooth: boolean;
     is_power_efficient: boolean;
 }>, z.ZodObject<z.objectUtil.extendShape<{
@@ -429,7 +429,7 @@ export declare const DbDtoFromCapability: z.ZodEffects<z.ZodIntersection<z.ZodDi
     codec: string;
     width: number;
     height: number;
-    fps: number;
+    frame_rate: number;
     is_smooth: boolean;
     is_power_efficient: boolean;
 } | {
@@ -495,7 +495,7 @@ export declare const DbDtoToCapability: z.ZodEffects<z.ZodObject<{
     codec: string;
     width: number;
     height: number;
-    fps: number;
+    frame_rate: number;
     is_smooth: boolean;
     is_power_efficient: boolean;
 } & {

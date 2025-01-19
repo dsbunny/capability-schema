@@ -18,7 +18,7 @@ export const CapabilityVideo = CapabilityBase.merge(z.object({
         .describe('Maximum width of the capability'),
     height: z.number().int().min(1).max(10000)
         .describe('Maximum height of the capability'),
-    fps: z.number().int().min(1).max(1000)
+    frame_rate: z.number().int().min(1).max(1000)
         .describe('Maximum frames per second of the capability'),
     is_smooth: z.boolean()
         .describe('Whether the capability is smooth'),
@@ -78,7 +78,7 @@ export const DbDtoFromCapability = Capability.transform((capability, ctx) => {
             codec: capability.codec,
             width: capability.width,
             height: capability.height,
-            fps: capability.fps,
+            frame_rate: capability.frame_rate,
             is_smooth: capability.is_smooth,
             is_power_efficient: capability.is_power_efficient,
         });
