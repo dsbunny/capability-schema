@@ -11,6 +11,10 @@ export const CapabilityBase = z.object({
 		.describe('The MIME subtype of the capability'),
 	is_supported: z.boolean()
 		.describe('Whether the capability is supported'),
+	is_smooth: z.boolean()
+		.describe('Whether the capability is smooth'),
+	is_power_efficient: z.boolean()
+		.describe('Whether the capability is power efficient'),
 });
 export type CapabilityBase = z.infer<typeof CapabilityBase>;
 
@@ -24,10 +28,6 @@ export const CapabilityVideo = CapabilityBase.merge(z.object({
 		.describe('Maximum height of the capability'),
 	frame_rate: z.number().int().min(1).max(1000)
 		.describe('Maximum frames per second of the capability'),
-	is_smooth: z.boolean()
-		.describe('Whether the capability is smooth'),
-	is_power_efficient: z.boolean()
-		.describe('Whether the capability is power efficient'),
 }))
 	.describe('The video capability');
 export type CapabilityVideo = z.infer<typeof CapabilityVideo>;
@@ -43,10 +43,6 @@ export const CapabilityAudio = CapabilityBase.merge(z.object({
 	// An integer cannot represent 5.1 surround sound.
 	channels: z.string().min(1).max(512)
 		.describe('Maximum number of channels of the capability'),
-	is_smooth: z.boolean()
-		.describe('Whether the capability is smooth'),
-	is_power_efficient: z.boolean()
-		.describe('Whether the capability is power efficient'),
 }))
 	.describe('The audio capability');
 export type CapabilityAudio = z.infer<typeof CapabilityAudio>;
@@ -57,6 +53,10 @@ export const CapabilityImage = CapabilityBase.merge(z.object({
 		.describe('Maximum width of the capability'),
 	height: z.number().int().min(1).max(65535)
 		.describe('Maximum height of the capability'),
+	is_smooth: z.literal(false)
+		.describe('Images are not smooth, as they are static'),
+	is_power_efficient: z.literal(true)
+		.describe('Images are power efficient, as they are static'),
 }))
 	.describe('The image capability');
 export type CapabilityImage = z.infer<typeof CapabilityImage>;
