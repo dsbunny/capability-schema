@@ -18,7 +18,7 @@ export const CapabilityBase = z.object({
 });
 export type CapabilityBase = z.infer<typeof CapabilityBase>;
 
-export const CapabilityVideo = CapabilityBase.merge(z.object({
+export const CapabilityVideo = CapabilityBase.extend(z.object({
 	mime_type: z.literal('video'),
 	codec: z.string().min(3).max(512)
 		.describe('The RFC-6381 codec of the capability'),
@@ -32,7 +32,7 @@ export const CapabilityVideo = CapabilityBase.merge(z.object({
 	.describe('The video capability');
 export type CapabilityVideo = z.infer<typeof CapabilityVideo>;
 
-export const CapabilityAudio = CapabilityBase.merge(z.object({
+export const CapabilityAudio = CapabilityBase.extend(z.object({
 	mime_type: z.literal('audio'),
 	codec: z.string().min(3).max(512)
 		.describe('The RFC-6381 codec of the capability'),
@@ -47,7 +47,7 @@ export const CapabilityAudio = CapabilityBase.merge(z.object({
 	.describe('The audio capability');
 export type CapabilityAudio = z.infer<typeof CapabilityAudio>;
 
-export const CapabilityImage = CapabilityBase.merge(z.object({
+export const CapabilityImage = CapabilityBase.extend(z.object({
 	mime_type: z.literal('image'),
 	width: z.number().int().min(1).max(65535)
 		.describe('Maximum width of the capability'),
@@ -62,13 +62,13 @@ export const CapabilityImage = CapabilityBase.merge(z.object({
 export type CapabilityImage = z.infer<typeof CapabilityImage>;
 
 export const CapabilityMetadata = z.object({
-	tenant_id: z.string().uuid()
+	tenant_id: z.uuid()
 		.describe('The UUID of the tenant'),
-	capability_id: z.string().uuid()
+	capability_id: z.uuid()
 		.describe('The UUID of the capability'),
-	create_timestamp: z.string().datetime()  // ISO 8601
+	create_timestamp: z.iso.datetime()  // ISO 8601
 		.describe('The timestamp of when the capability was created'),
-	modify_timestamp: z.string().datetime()
+	modify_timestamp: z.iso.datetime()
 		.describe('The timestamp of when the capability was last modified'),
 	is_deleted: z.boolean().default(false)
 		.describe('Whether the capability is deleted'),
@@ -76,7 +76,7 @@ export const CapabilityMetadata = z.object({
 		.describe('The row number of the capability'),
 });
 
-export const CapabilityTypes = z.discriminatedUnion('mime_type', [
+export const CapabilityTypes = z.discriminatedUnion([
 	CapabilityVideo,
 	CapabilityAudio,
 	CapabilityImage,
@@ -131,8 +131,8 @@ export const DbDtoFromCapability = Capability.transform((capability, ctx) => {
 });
 
 export const DbDtoToCapability = z.object({
-	capability_id: z.string().uuid(),
-	tenant_id: z.string().uuid(),
+	capability_id: z.uuid(),
+	tenant_id: z.uuid(),
 	mime_type: z.string().min(3).max(512),
 	mime_subtype: z.string().min(3).max(512),
 	detail: z.string().min(3).max(512),
@@ -147,7 +147,7 @@ export const DbDtoToCapability = z.object({
 		const detail = jsonSafeParser(CapabilityVideo).safeParse(dto.detail);
 		if(!detail.success) {
 			ctx.addIssue({
-				code: z.ZodIssueCode.custom,
+				code: "custom",
 				message: 'Failed to parse video capability',
 				fatal: true,
 			});
@@ -166,7 +166,7 @@ export const DbDtoToCapability = z.object({
 		const detail = jsonSafeParser(CapabilityAudio).safeParse(dto.detail);
 		if(!detail.success) {
 			ctx.addIssue({
-				code: z.ZodIssueCode.custom,
+				code: "custom",
 				message: 'Failed to parse audio capability',
 				fatal: true,
 			});
@@ -185,7 +185,7 @@ export const DbDtoToCapability = z.object({
 		const detail = jsonSafeParser(CapabilityImage).safeParse(dto.detail);
 		if(!detail.success) {
 			ctx.addIssue({
-				code: z.ZodIssueCode.custom,
+				code: "custom",
 				message: 'Failed to parse image capability',
 				fatal: true,
 			});
@@ -202,7 +202,7 @@ export const DbDtoToCapability = z.object({
 		};
 	}
 	ctx.addIssue({
-		code: z.ZodIssueCode.custom,
+		code: "custom",
 		message: 'Invalid mime type',
 		fatal: true,
 	});

@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import { z, ZodIssueCode } from 'zod';
+import { z } from 'zod';
 
 function parseJsonPreprocessor(value: any, ctx: z.RefinementCtx) {
 	if(typeof value === 'string') {
@@ -9,7 +9,7 @@ function parseJsonPreprocessor(value: any, ctx: z.RefinementCtx) {
 	  	} catch(e: unknown) {
 			const err = (e instanceof Error) ? e : new Error(`Caught unknown error: ${e}`);
 			ctx.addIssue({
-				code: ZodIssueCode.custom,
+				code: "custom",
 				message: err.message,
 			});
 	  	}

@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/capability-schema",
-	"version": "2.0.2",
+	"version": "3.0.3",
 	"description": "Schema for Cap-DB",
 	"type": "module",
 	"main": "dist/index.js",
@@ -13,7 +13,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"zod": "^3.23.8"
+		"zod": "4.0.0-beta.20250424T163858"
 	},
 	"devDependencies": {
 		"typescript": "^5.5.3"

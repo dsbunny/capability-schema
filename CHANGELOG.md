@@ -1,4 +1,7 @@
 # Changelog
+## v3.0.3
+- Bump to `zod@4.0.0-beta`.
+
 ## v2.0.2
 - Replace `Capability` to cover both _video_, _audio_, and _image_ mime types.
 - Rename `fps` field to `frame_rate`.
