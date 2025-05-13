@@ -18,7 +18,7 @@ export const CapabilityBase = z.object({
 });
 export type CapabilityBase = z.infer<typeof CapabilityBase>;
 
-export const CapabilityVideo = CapabilityBase.extend(z.object({
+export const CapabilityVideo = CapabilityBase.extend({
 	mime_type: z.literal('video'),
 	codec: z.string().min(3).max(512)
 		.describe('The RFC-6381 codec of the capability'),
@@ -28,11 +28,11 @@ export const CapabilityVideo = CapabilityBase.extend(z.object({
 		.describe('Maximum height of the capability'),
 	frame_rate: z.number().int().min(1).max(1000)
 		.describe('Maximum frames per second of the capability'),
-}))
+})
 	.describe('The video capability');
 export type CapabilityVideo = z.infer<typeof CapabilityVideo>;
 
-export const CapabilityAudio = CapabilityBase.extend(z.object({
+export const CapabilityAudio = CapabilityBase.extend({
 	mime_type: z.literal('audio'),
 	codec: z.string().min(3).max(512)
 		.describe('The RFC-6381 codec of the capability'),
@@ -43,11 +43,11 @@ export const CapabilityAudio = CapabilityBase.extend(z.object({
 	// An integer cannot represent 5.1 surround sound.
 	channels: z.string().min(1).max(512)
 		.describe('Maximum number of channels of the capability'),
-}))
+})
 	.describe('The audio capability');
 export type CapabilityAudio = z.infer<typeof CapabilityAudio>;
 
-export const CapabilityImage = CapabilityBase.extend(z.object({
+export const CapabilityImage = CapabilityBase.extend({
 	mime_type: z.literal('image'),
 	width: z.number().int().min(1).max(65535)
 		.describe('Maximum width of the capability'),
@@ -57,7 +57,7 @@ export const CapabilityImage = CapabilityBase.extend(z.object({
 		.describe('Images are not smooth, as they are static'),
 	is_power_efficient: z.literal(true)
 		.describe('Images are power efficient, as they are static'),
-}))
+})
 	.describe('The image capability');
 export type CapabilityImage = z.infer<typeof CapabilityImage>;
 
@@ -110,7 +110,7 @@ export const DbDtoFromCapability = Capability.transform((capability, ctx) => {
 		} as CapabilityImage);
 	} else {
 		ctx.addIssue({
-			code: z.ZodIssueCode.custom,
+			code: "custom",
 			message: 'Invalid mime type',
 			fatal: true,
 		});

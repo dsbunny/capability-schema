@@ -5,7 +5,7 @@ export declare const CapabilityBase: z.ZodObject<{
     is_supported: z.ZodBoolean;
     is_smooth: z.ZodBoolean;
     is_power_efficient: z.ZodBoolean;
-}, {}>;
+}, {}, {}>;
 export type CapabilityBase = z.infer<typeof CapabilityBase>;
 export declare const CapabilityVideo: z.ZodObject<{
     mime_subtype: z.ZodString;
@@ -17,7 +17,7 @@ export declare const CapabilityVideo: z.ZodObject<{
     width: z.ZodNumber;
     height: z.ZodNumber;
     frame_rate: z.ZodNumber;
-}, {}>;
+}, {}, {}>;
 export type CapabilityVideo = z.infer<typeof CapabilityVideo>;
 export declare const CapabilityAudio: z.ZodObject<{
     mime_subtype: z.ZodString;
@@ -28,7 +28,7 @@ export declare const CapabilityAudio: z.ZodObject<{
     codec: z.ZodString;
     sample_rate: z.ZodNumber;
     channels: z.ZodString;
-}, {}>;
+}, {}, {}>;
 export type CapabilityAudio = z.infer<typeof CapabilityAudio>;
 export declare const CapabilityImage: z.ZodObject<{
     mime_subtype: z.ZodString;
@@ -38,7 +38,7 @@ export declare const CapabilityImage: z.ZodObject<{
     height: z.ZodNumber;
     is_smooth: z.ZodLiteral<false>;
     is_power_efficient: z.ZodLiteral<true>;
-}, {}>;
+}, {}, {}>;
 export type CapabilityImage = z.infer<typeof CapabilityImage>;
 export declare const CapabilityMetadata: z.ZodObject<{
     tenant_id: z.ZodUUID;
@@ -47,7 +47,7 @@ export declare const CapabilityMetadata: z.ZodObject<{
     modify_timestamp: z.iso.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
     row_number: z.ZodNumber;
-}, {}>;
+}, {}, {}>;
 export declare const CapabilityTypes: z.ZodDiscriminatedUnion<[z.ZodObject<{
     mime_subtype: z.ZodString;
     is_supported: z.ZodBoolean;
@@ -58,7 +58,7 @@ export declare const CapabilityTypes: z.ZodDiscriminatedUnion<[z.ZodObject<{
     width: z.ZodNumber;
     height: z.ZodNumber;
     frame_rate: z.ZodNumber;
-}, {}>, z.ZodObject<{
+}, {}, {}>, z.ZodObject<{
     mime_subtype: z.ZodString;
     is_supported: z.ZodBoolean;
     is_smooth: z.ZodBoolean;
@@ -67,7 +67,7 @@ export declare const CapabilityTypes: z.ZodDiscriminatedUnion<[z.ZodObject<{
     codec: z.ZodString;
     sample_rate: z.ZodNumber;
     channels: z.ZodString;
-}, {}>, z.ZodObject<{
+}, {}, {}>, z.ZodObject<{
     mime_subtype: z.ZodString;
     is_supported: z.ZodBoolean;
     mime_type: z.ZodLiteral<"image">;
@@ -75,7 +75,7 @@ export declare const CapabilityTypes: z.ZodDiscriminatedUnion<[z.ZodObject<{
     height: z.ZodNumber;
     is_smooth: z.ZodLiteral<false>;
     is_power_efficient: z.ZodLiteral<true>;
-}, {}>]>;
+}, {}, {}>]>;
 export type CapabilityTypes = z.infer<typeof CapabilityTypes>;
 export declare const Capability: z.ZodIntersection<z.ZodDiscriminatedUnion<[z.ZodObject<{
     mime_subtype: z.ZodString;
@@ -87,7 +87,7 @@ export declare const Capability: z.ZodIntersection<z.ZodDiscriminatedUnion<[z.Zo
     width: z.ZodNumber;
     height: z.ZodNumber;
     frame_rate: z.ZodNumber;
-}, {}>, z.ZodObject<{
+}, {}, {}>, z.ZodObject<{
     mime_subtype: z.ZodString;
     is_supported: z.ZodBoolean;
     is_smooth: z.ZodBoolean;
@@ -96,7 +96,7 @@ export declare const Capability: z.ZodIntersection<z.ZodDiscriminatedUnion<[z.Zo
     codec: z.ZodString;
     sample_rate: z.ZodNumber;
     channels: z.ZodString;
-}, {}>, z.ZodObject<{
+}, {}, {}>, z.ZodObject<{
     mime_subtype: z.ZodString;
     is_supported: z.ZodBoolean;
     mime_type: z.ZodLiteral<"image">;
@@ -104,14 +104,14 @@ export declare const Capability: z.ZodIntersection<z.ZodDiscriminatedUnion<[z.Zo
     height: z.ZodNumber;
     is_smooth: z.ZodLiteral<false>;
     is_power_efficient: z.ZodLiteral<true>;
-}, {}>]>, z.ZodObject<{
+}, {}, {}>]>, z.ZodObject<{
     tenant_id: z.ZodUUID;
     capability_id: z.ZodUUID;
     create_timestamp: z.iso.ZodISODateTime;
     modify_timestamp: z.iso.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
     row_number: z.ZodNumber;
-}, {}>>;
+}, {}, {}>>;
 export type Capability = z.infer<typeof Capability>;
 export declare const DbDtoFromCapability: z.ZodPipe<z.ZodIntersection<z.ZodDiscriminatedUnion<[z.ZodObject<{
     mime_subtype: z.ZodString;
@@ -123,7 +123,7 @@ export declare const DbDtoFromCapability: z.ZodPipe<z.ZodIntersection<z.ZodDiscr
     width: z.ZodNumber;
     height: z.ZodNumber;
     frame_rate: z.ZodNumber;
-}, {}>, z.ZodObject<{
+}, {}, {}>, z.ZodObject<{
     mime_subtype: z.ZodString;
     is_supported: z.ZodBoolean;
     is_smooth: z.ZodBoolean;
@@ -132,7 +132,7 @@ export declare const DbDtoFromCapability: z.ZodPipe<z.ZodIntersection<z.ZodDiscr
     codec: z.ZodString;
     sample_rate: z.ZodNumber;
     channels: z.ZodString;
-}, {}>, z.ZodObject<{
+}, {}, {}>, z.ZodObject<{
     mime_subtype: z.ZodString;
     is_supported: z.ZodBoolean;
     mime_type: z.ZodLiteral<"image">;
@@ -140,14 +140,14 @@ export declare const DbDtoFromCapability: z.ZodPipe<z.ZodIntersection<z.ZodDiscr
     height: z.ZodNumber;
     is_smooth: z.ZodLiteral<false>;
     is_power_efficient: z.ZodLiteral<true>;
-}, {}>]>, z.ZodObject<{
+}, {}, {}>]>, z.ZodObject<{
     tenant_id: z.ZodUUID;
     capability_id: z.ZodUUID;
     create_timestamp: z.iso.ZodISODateTime;
     modify_timestamp: z.iso.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
     row_number: z.ZodNumber;
-}, {}>>, z.ZodTransform<{
+}, {}, {}>>, z.ZodTransform<{
     capability_id: string;
     tenant_id: string;
     mime_type: "video" | "audio" | "image";
@@ -204,7 +204,7 @@ export declare const DbDtoToCapability: z.ZodPipe<z.ZodObject<{
     modify_timestamp: z.ZodPipe<z.ZodString, z.ZodTransform<string, string>>;
     is_deleted: z.ZodDefault<z.ZodNumber>;
     row_number: z.ZodNumber;
-}, {}>, z.ZodTransform<({
+}, {}, {}>, z.ZodTransform<({
     mime_subtype: string;
     is_supported: boolean;
     is_smooth: boolean;

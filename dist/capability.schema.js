@@ -14,7 +14,7 @@ export const CapabilityBase = z.object({
     is_power_efficient: z.boolean()
         .describe('Whether the capability is power efficient'),
 });
-export const CapabilityVideo = CapabilityBase.extend(z.object({
+export const CapabilityVideo = CapabilityBase.extend({
     mime_type: z.literal('video'),
     codec: z.string().min(3).max(512)
         .describe('The RFC-6381 codec of the capability'),
@@ -24,9 +24,9 @@ export const CapabilityVideo = CapabilityBase.extend(z.object({
         .describe('Maximum height of the capability'),
     frame_rate: z.number().int().min(1).max(1000)
         .describe('Maximum frames per second of the capability'),
-}))
+})
     .describe('The video capability');
-export const CapabilityAudio = CapabilityBase.extend(z.object({
+export const CapabilityAudio = CapabilityBase.extend({
     mime_type: z.literal('audio'),
     codec: z.string().min(3).max(512)
         .describe('The RFC-6381 codec of the capability'),
@@ -37,9 +37,9 @@ export const CapabilityAudio = CapabilityBase.extend(z.object({
     // An integer cannot represent 5.1 surround sound.
     channels: z.string().min(1).max(512)
         .describe('Maximum number of channels of the capability'),
-}))
+})
     .describe('The audio capability');
-export const CapabilityImage = CapabilityBase.extend(z.object({
+export const CapabilityImage = CapabilityBase.extend({
     mime_type: z.literal('image'),
     width: z.number().int().min(1).max(65535)
         .describe('Maximum width of the capability'),
@@ -49,7 +49,7 @@ export const CapabilityImage = CapabilityBase.extend(z.object({
         .describe('Images are not smooth, as they are static'),
     is_power_efficient: z.literal(true)
         .describe('Images are power efficient, as they are static'),
-}))
+})
     .describe('The image capability');
 export const CapabilityMetadata = z.object({
     tenant_id: z.uuid()
@@ -98,7 +98,7 @@ export const DbDtoFromCapability = Capability.transform((capability, ctx) => {
     }
     else {
         ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             message: 'Invalid mime type',
             fatal: true,
         });
