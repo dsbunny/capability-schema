@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export declare const CapabilityBase: z.ZodObject<{
     mime_type: z.ZodString;
     mime_subtype: z.ZodString;
