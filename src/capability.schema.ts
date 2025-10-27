@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import { z } from 'zod/v4';
+import * as z from "zod";
 import { sqliteDateSchema } from './sqlite-date.schema.js';
 import { jsonSafeParser } from './json-safe-parser.js';
 
@@ -76,7 +76,7 @@ export const CapabilityMetadata = z.object({
 		.describe('The row number of the capability'),
 });
 
-export const CapabilityTypes = z.discriminatedUnion([
+export const CapabilityTypes = z.discriminatedUnion("mime_type", [
 	CapabilityVideo,
 	CapabilityAudio,
 	CapabilityImage,

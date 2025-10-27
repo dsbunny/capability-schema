@@ -1,4 +1,8 @@
 # Changelog
+## v3.1.5
+- Bump to `zod@4.1.11`.
+- Move Zod to `peerDependencies` so users can bring their own Zod.
+
 ## v3.0.4
 - Bump to `zod@next` with `zod/v4` imports.
 
